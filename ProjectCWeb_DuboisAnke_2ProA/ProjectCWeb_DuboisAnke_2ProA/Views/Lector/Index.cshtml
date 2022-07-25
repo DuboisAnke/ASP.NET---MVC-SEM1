@@ -1,0 +1,62 @@
+﻿@model IEnumerable<ProjectCWeb_DuboisAnke_2ProA.Models.Lector>
+
+@{
+    ViewData["Title"] = "Index";
+}
+<link rel="stylesheet" href="css/personalstyling.css" />
+<link rel="stylesheet" href="~/css/footerstyle.css" />
+
+<br />
+<h1>LECTOREN</h1>
+<hr />
+<p>
+    <a asp-action="Create" class="text-link p-2">Nieuwe lector aanmaken</a>
+</p>
+<hr />
+@using (Html.BeginForm())
+{
+    <p>
+            Achternaam lector: <input type="text" name="SearchString"/>
+            <input type="submit" value="ZOEK" class="save"/>
+        </p>
+
+}
+
+<hr />
+<table class="personal-table">
+    <thead>
+        <tr>
+            <th>
+                <label>NAAM</label>
+            </th>
+            <th>
+                <label>VOORNAAM</label>
+            </th>
+            <th>
+                <label>E-MAILADRES</label>
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Gebruiker.Naam)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Gebruiker.Voornaam)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Gebruiker.Email)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.LectorId">Bewerk</a> |
+                    <a asp-action="Details" asp-route-id="@item.LectorId">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.LectorId">Verwijder</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

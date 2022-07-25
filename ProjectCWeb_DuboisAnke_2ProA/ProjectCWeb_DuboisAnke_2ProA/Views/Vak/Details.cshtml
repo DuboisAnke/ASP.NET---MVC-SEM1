@@ -1,0 +1,51 @@
+﻿@model ProjectCWeb_DuboisAnke_2ProA.Models.Vak
+
+@{
+    ViewData["Title"] = "Details";
+}
+<link rel="stylesheet" href="~/css/personalstyling.css" />
+<link rel="stylesheet" href="~/css/footerstyle.css" />
+
+<br />
+<h1>DETAILS</h1>
+
+<div>
+    <hr />
+    <dl class="row body-style">
+        <dt class="col-sm-2">
+            <label class="h6">ID</label>
+        </dt>
+        <dd class="col-sm-10">
+            <p>
+                @Html.DisplayFor(model => model.VakId)
+            </p>
+        </dd>
+        <dt class="col-sm-2">
+            <label class="h6">NAAM</label>
+        </dt>
+        <dd class="col-sm-10">
+            <p>
+                @Html.DisplayFor(model => model.VakNaam)
+            </p>
+        </dd>
+        <dt class="col-sm-2">
+            <label class="h6">SP</label>
+        </dt>
+        <dd class="col-sm-10">
+            <p>
+                @Html.DisplayFor(model => model.StudiePunten)
+            </p>
+        </dd>
+        <dt class="col-sm-2">
+            <label class="h6">COVER</label>
+        </dt>
+        <dd class="col-sm-10">
+            <img src="@Model.Handboek.Afbeelding" width="100" />
+        </dd>
+    </dl>
+</div>
+<hr/>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.VakId">Bewerk</a> |
+    <a asp-action="Index">Terug naar VAKKEN</a>
+</div>

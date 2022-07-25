@@ -1,0 +1,46 @@
+﻿@model ProjectCWeb_DuboisAnke_2ProA.Models.Inschrijving
+
+@{
+    ViewData["Title"] = "Edit";
+}
+<link rel="stylesheet" href="~/css/personalstyling.css" />
+<link rel="stylesheet" href="~/css/footerstyle.css" />
+
+<br />
+<h1>BEWERK INSCHRIJVING</h1>
+
+<hr />
+<div class="row body-style">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="InschrijvingId" />
+            <div class="form-group">
+                <label class="h5">STUDENT</label>
+                <select asp-for="StudentID" class="form-control" asp-items="ViewBag.StudentID"></select>
+                <span asp-validation-for="StudentID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="h5">ACADEMIEJAAR</label>
+                <select asp-for="AcademieJaarID" class="form-control" asp-items="ViewBag.AcademieJaarID"></select>
+                <span asp-validation-for="AcademieJaarID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="h5">VAKLECTOR</label>
+                <select asp-for="VakLectorId" class="form-control" asp-items="ViewBag.VaklectorID"></select>
+                <span asp-validation-for="VakLectorId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="OPSLAAN" class="save" />
+            </div>
+        </form>
+    </div>
+</div>
+<hr/>
+<div>
+    <a asp-action="Index">Terug naar INSCHRIJVINGEN</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

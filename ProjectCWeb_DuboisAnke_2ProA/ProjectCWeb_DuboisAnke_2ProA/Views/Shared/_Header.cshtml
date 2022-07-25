@@ -1,0 +1,61 @@
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<CustomIdentityUser> SignInManager
+@inject UserManager<CustomIdentityUser> UserManager
+@*
+    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+*@
+
+<link rel="stylesheet" href="css/personalstyling.css" />
+
+<nav class="navbar navbar-expand-lg navbar-toggleable-sm">
+    <div class="container-fluid">
+        <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index"><img src="https://images.squarespace-cdn.com/content/v1/5b55d4e531d4df98ef0e1ef9/1543850822363-4HVSSDNUEO13GZG5XWPK/Pxl-logo.png?format=300w" alt="Logo PXL" width="50" height="50">User Manager</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+            <ul class="nav">
+                <li class="nav-item">
+                    <a class="nav-link text-light font-weight-bold" asp-area="" asp-controller="Home" asp-action="Index">HOME</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-light" asp-area="" asp-controller="Student" asp-action="Index">STUDENT</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-light" asp-area="" asp-controller="Lector" asp-action="Index">LECTOR</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-light" asp-area="" asp-controller="Handboek" asp-action="Index">HANDBOEK</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-light" asp-area="" asp-controller="Vak" asp-action="Index">VAK</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-light" asp-area="" asp-controller="VakLector" asp-action="Index">VAKLECTOR</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-light" asp-area="" asp-controller="AcademieJaar" asp-action="Index">ACADEMIEJAREN</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-light" asp-area="" asp-controller="Inschrijving" asp-action="Index">INSCHRIJVING</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-light" asp-area="" asp-controller="Account" asp-action="Login">LOGIN</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-light" asp-area="" asp-controller="Account" asp-action="Register">REGISTER</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-light" asp-area="" asp-controller="Account" asp-action="Roles">ROLES</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-light" asp-area="" asp-controller="Account" asp-action="Logout">LOGOUT</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-light" asp-page="/Logboek">PORTFOLIO</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>

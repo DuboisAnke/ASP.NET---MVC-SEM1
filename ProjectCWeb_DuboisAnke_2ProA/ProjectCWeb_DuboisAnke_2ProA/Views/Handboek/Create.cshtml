@@ -1,0 +1,51 @@
+﻿@model ProjectCWeb_DuboisAnke_2ProA.Models.Handboek
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<link rel="stylesheet" href="~/css/personalstyling.css" />
+<link rel="stylesheet" href="~/css/footerstyle.css" />
+
+<br />
+<h1>HANDBOEK</h1>
+
+
+<hr />
+<div class="row body-style">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label class="h5">Titel</label>
+                <input asp-for="Titel" class="form-control input-field" placeholder="Titel"/>
+                <span asp-validation-for="Titel" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="h5">Prijs</label>
+                <input asp-for="Kostprijs" class="form-control input-field" placeholder="49.99"/>
+                <span asp-validation-for="Kostprijs" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="h5">Uitgavedatum</label>
+                <input asp-for="UitgifteDatum" class="form-control input-field" placeholder="Uitgavedatum"/>
+                <span asp-validation-for="UitgifteDatum" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="h5">Cover</label>
+                <input asp-for="Afbeelding" class="form-control input-field" placeholder="Hyperlink naar de afbeelding" />
+            </div>
+            <div class="form-group">
+                <input type="submit" value="HANDBOEK AANMAKEN" class="save" />
+            </div>
+        </form>
+    </div>
+</div>
+<hr/>
+<div>
+    <a asp-action="Index">Terug naar HANDBOEKEN</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

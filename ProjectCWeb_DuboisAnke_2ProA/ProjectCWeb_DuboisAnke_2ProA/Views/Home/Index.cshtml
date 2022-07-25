@@ -1,0 +1,86 @@
+﻿@model ProjectCWeb_DuboisAnke_2ProA.ViewModels.OverzichtGebruikerViewModel
+@using ProjectCWeb_DuboisAnke_2ProA.Data
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<link rel="stylesheet" href="css/personalstyling.css" />
+
+<div class="body-style center-body">
+    <a href="https://www.pxl.be/">
+        <img src="https://images.squarespace-cdn.com/content/v1/5b55d4e531d4df98ef0e1ef9/1543850822363-4HVSSDNUEO13GZG5XWPK/Pxl-logo.png?format=300w" width="150" />
+    </a>
+    <br/>
+    <H1>OVERZICHT GEBRUIKERS</H1>
+    <hr/>
+    <br/>
+    <h4>LECTOREN</h4>
+    <br/>
+    <table class="overzicht-table">
+        <thead>
+        <tr>
+            <th>
+                <label>NAAM</label>
+            </th>
+            <th>
+                <label>VOORNAAM</label>
+            </th>
+            <th>
+                <label>E-MAILADRES</label>
+            </th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var item in Model.AlleLectoren)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Naam)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Voornaam)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+            </tr>
+        }
+        </tbody>
+    </table>
+    <br/>
+    <h4>STUDENTEN</h4>
+    <br/>
+    <table class="overzicht-table">
+        <thead>
+        <tr>
+            <th>
+                <label>NAAM</label>
+            </th>
+            <th>
+                <label>VOORNAAM</label>
+            </th>
+            <th>
+                <label>E-MAILADRES</label>
+            </th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var item in Model.AlleStudenten)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Naam)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Voornaam)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+            </tr>
+        }
+        </tbody>
+    </table>
+</div>
+
+

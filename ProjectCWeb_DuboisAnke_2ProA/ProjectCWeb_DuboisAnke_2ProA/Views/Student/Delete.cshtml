@@ -1,0 +1,29 @@
+﻿@model ProjectCWeb_DuboisAnke_2ProA.Models.Student
+
+@{
+    ViewData["Title"] = "Delete";
+}
+<link rel="stylesheet" href="~/css/personalstyling.css" />
+<link rel="stylesheet" href="~/css/footerstyle.css" />
+
+<br />
+<h1>VERWIJDER</h1>
+<hr/>
+<h4 class="text-danger">BENT U ZEKER DAT U DIT WILT VERWIJDEREN?</h4>
+<div>
+    <hr />
+    <dl class="row body-style">
+        <dt class="col-sm-2">
+            <label class="h5">STUDENT</label>
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Gebruiker.Email)
+        </dd>
+    </dl>
+    <hr/>
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="StudentId" />
+        <input type="submit" value="VERWIJDER" class="btn btn-danger" /> |
+        <a asp-action="Index">Terug naar STUDENTEN</a>
+    </form>
+</div>

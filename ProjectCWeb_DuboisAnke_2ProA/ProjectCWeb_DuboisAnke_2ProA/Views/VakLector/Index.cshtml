@@ -1,0 +1,46 @@
+﻿@model IEnumerable<ProjectCWeb_DuboisAnke_2ProA.Models.VakLector>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<link rel="stylesheet" href="css/personalstyling.css" />
+<link rel="stylesheet" href="~/css/footerstyle.css" />
+
+<br />
+<h1>VAKLECTOREN</h1>
+<hr />
+<p>
+    <a asp-action="Create" class="text-link p-2">Nieuwe vaklector aanmaken</a>
+</p>
+<hr />
+<table class="personal-table">
+    <thead>
+        <tr>
+            <th>
+                <label>Lector</label>
+            </th>
+            <th>
+                <label>Vak</label>
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Lector.Gebruiker.Naam)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Vak.VakNaam)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.VakLectorId">Bewerk</a> |
+                <a asp-action="Details" asp-route-id="@item.VakLectorId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.VakLectorId">Verwijder</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

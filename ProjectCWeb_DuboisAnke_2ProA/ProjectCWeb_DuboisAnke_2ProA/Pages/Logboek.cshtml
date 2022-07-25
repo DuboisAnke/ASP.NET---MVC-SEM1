@@ -1,0 +1,277 @@
+﻿@page
+@model ProjectCWeb_DuboisAnke_2ProA.Pages.LogboekModel
+@{
+}
+
+<link rel="stylesheet" href="css/personalstyling.css" />
+
+<h1>Portfolio</h1>
+<br/>
+<br/>
+<h1>DEEL 1</h1>
+<hr/>
+<div class="center-body">
+<div class="body-style">
+    <h2>STAP 1 : Toevoegen van juiste packages.</h2>
+    <h4>Kort samengevat:</h4>
+    <p>Als eerste stap, nadat we het project hebben gemaakt, voegen we de juiste packages toe. De packages die we toevoegen zijn Entity Framework - SQL Server en  Entity Framework - Tools. Het is hierbij steeds belangrijk dat we erop letten dat we niet de laatste versie installeren, maar een 3.x versie.</p>
+    <img src="stap1.png" />
+    <br />
+    <hr />
+</div>
+
+<div class="body-style">
+    <h2>STAP 2 : Aanmaken van models.</h2>
+    <h4>Kort samengevat:</h4>
+    <p>Nadat we de juiste packages hebben toegevoegd, gaan we als volgende stap onze models maken. Onze models zijn gebaseerd op het datamodel</p>
+    <img src="DataModel.png" />
+    <br />
+    <p>Voor iedere verbinding die we in ons datamodel terugvinden, zullen we een referentie moeten maken in onze models. Dit doen we dan zodat er een connectie bestaat tussen de verschillende tabellen die op een logische manier verloopt. We kunnen hierbij als voorbeeld het model voor vaklector nemen.</p>
+    <img src="stap2vaklectormodel.png" />
+    <br />
+    <p>In het datamodel zien we dus terug dat er een verbinding is tussen vaklectoren - lectoren, vaklectoren - vakken, vaklectoren - inschrijvingen. In het bijhorende model hierboven, vinden we deze ook terug, meegegeven als properties van de class, voor een 1 op 1 verbinding is enkel de class voldoende, voor een 1 op meer verbinding gebruiken we een ICollection. Dit herhalen we voor elk model dat we moeten aanmaken.</p>
+    <br />
+    <hr />
+</div>
+
+<div class="body-style">
+    <h2>STAP 3 : Aanmaken van databank.</h2>
+    <h4>Kort samengevat:</h4>
+    <p>Als eerste gaan we bij het aanmaken van de databank een class aanmaken. In ons geval 'PXLAppDbContext' Deze vullen we ook met DbSets voor ieder model. We maken hier een aparte folder Data voor.</p>
+    <img src="stap3pxldbcontext.png" />
+    <br />
+    <p>Daarnaast gaan we in onze Startup.cs ook services toevoegen</p>
+    <img src="stap3services.png" />
+    <p>Onze connection string, maken we vervolgens op deze manier aan in onze appsettings.json</p>
+    <img src="stap3json.png" />
+    <br />
+</div>
+
+<div class="body-style">
+    <h2>STAP 4 : Vullen van databank via SeedData</h2>
+    <h4>Kort samengevat:</h4>
+    <p>We maken in onze data-folder een class SeedData. In de SeedData class, maken we een method 'EnsurePopulated'. Hierin gaan we door if-checks na of er data aanwezig is, zoniet vullen we data in in onze databank.</p>
+    <img src="stap4seeddata.png" />
+    <br />
+    <p>Daarnaast gaan we in onze Startup.cs dan de .EnsurePopulated methode oproepen</p>
+    <img src="stap4startup.png" />
+    <br />
+    <hr />
+</div>
+
+<div class="body-style">
+    <h2>STAP 5 : Migraties</h2>
+    <h4>Kort samengevat:</h4>
+    <p>In deze stap gaan we simpelweg via onze Packet Manager Console 2 commando's uitvoeren, namelijk het commando 'add-migration initial' en 'update-database'</p>
+    <hr />
+</div>
+
+<div class="body-style">
+    <h2>STAP 6 : Controllers en views scaffolden</h2>
+    <h4>Kort samengevat:</h4>
+    <p>We kunnen in dit gevaL de controllers en views van onze models scaffolden. Wel een belangrijk punt is dat er daarna in de views en controllers toch nog veel zal moeten aangepast worden. Om er uiteindelijk voor te zorgen dat we geen ID velden meer zien, zullen we iin de controllers gebruik moeten maken van .Include. Een voorbeeldje van de pagina inschrijvingen staat hieronder. dit principe passen we overal toe.</p>
+    <img src="stap6view.png" />
+    <br />
+    <img src="stap6controller.png" />
+    <br />
+    <hr />
+</div>
+
+<div class="body-style">
+    <h2>STAP 7 : Footer - ViewComponent</h2>
+    <h4>Kort samengevat:</h4>
+    <p>Aangezien de footer een van de elementen is die steeds terug voorkomt op elke pagina, heb ik ervoor gekozen om deze in een viewcomponent te plaatsen. Deze viewcomponent is een klasse met eem Invoke-methode in die een view returned. Op die manier laden we in onze _Layout ook het viewcomponent in. Tevens moeten we in onze Shared-folder een nieuwe map 'Component' maken en daarin een folder die exact dezelfde naam heeft als het eerste deel van de ViewComponent. In deze folder komt dan de Default.cshtml, die de HTML-code bevat.</p>
+    <img src="stap7folders.png" />
+    <br />
+    <img src="stap7layout.png" />
+    <br />
+    <hr />
+</div>
+
+
+<div class="body-style">
+    <h2>STAP 8 : Header - Partial View</h2>
+    <h4>Kort samengevat:</h4>
+    <p>Omdat de header in dit project statisch en is en reeds bepaald, maar wel op elke pagina terugkomt, heb ik dit toegvoegd aan een partial view. Die partial view spreken we dan aan in de layout.</p>
+    <img src="stap8layout.png"/>
+    <br />
+    <hr />
+</div>
+
+<div class="body-style">
+    <h2>STAP 9 :  Taghelpers met een ViewModel en overzicht met Linq</h2>
+    <h4>Kort samengevat:</h4>
+    <p>Zowel voor student als lector maken we gebruik van een Taghelper om de details in te laden, In de details gebruiken we namelijk Linq om ervoor te zorgen dat we een overzicht krijgen van de student of lector en alle vakken met handboeken waar ze voor ingeschreven zijn. Om dit te bekomen maken we tevens gebruik van een ViewModel met een aantal Lists die we kunnen doorgeven via de parameters van constructor en method.</p>
+    <br/>
+    <p>We maken een viewmodel met de correcte properties en lists</p>
+    <img src="stap9viewmodel.png"/>
+    <br/>
+    <p>Daarna passen we onze controller aan met Linq om ook vakken en handboeken te includen.</p>
+    <img src="stap9controller.png"/>
+    <p>Als laatste gebruiken we een taghelper die de html genereert voor dit viewmodel. Tevens gebruiken we dit viewmodel op onze Details-pagina. We moeten ook in onze _Viewimports file ons project toevoegen als taghelper</p>
+    <img src="stap9taghelper.png"/>
+    <br />
+    <hr />
+</div>
+
+<div class="body-style">
+    <h2>STAP 10 :  Overzicht gebruikers op Home-pagina met een ViewModel</h2>
+    <h4>Kort samengevat:</h4>
+    <p>Om een kort overzicht te geven van alle gebruikers, mooi opgedeeld in studenten en lectoren, passen we hetzelfde principe van stap 9 toe, zonder gebruik te maken van een taghelper.</p>
+    <img src="stap10model.png"/>
+    <br/>
+    <img src="stap10controller.png"/>
+    <br />
+    <hr />
+</div>
+
+<div class="body-style">
+    <h2>STAP 11 :  Validaties</h2>
+    <h4>Kort samengevat:</h4>
+    <p>Als eerste validatie heb ik een custom date validator geschreven. Dit zetten we in een folder met dezelfde naam. We kunnen dan deze custom validation toevoegen aan oms model, zoals we een [Required] zouden toevoegen.</p>
+    <img src="stap11customdatevalidator.png"/>
+    <br/>
+    <p>De overige validaties gebeuren in de controller. Een voorbeeld hiervan is de validatie bij de inschrijvingen.</p>
+    <img src="stap11modelstateval.png"/>
+    <br />
+    <hr />
+</div>
+
+    <div class="body-style">
+        <h2>STAP 12 :  Styling</h2>
+        <h4>Kort samengevat:</h4>
+        <p>Voor de styling is er gebruik gemaakt van Bootstrap en CSS. Omdat de links naar de css-pagina 'site' niet altijd leek te werken heb ik ervoor gekozen om aparte css-files aan te maken voor de opmaak.</p>
+        <img src="stap12styling.png"/>
+        <br />
+        <hr />
+    </div>
+    
+    <br/>
+    <hr/>
+    <br/>
+    
+    <h1>DEEL 2</h1>
+    <hr/>
+    
+    <div class="body-style">
+        <h2>STAP 1 :  Correcte package toevoegen</h2>
+        <h4>Kort samengevat:</h4>
+        <p>We voegen de package Microsoft.AspNetCore.Identity.entityFrameworkCore toe aan het project.
+            Dit zal ervoor zorgen dat we het identity framework kunnen gebruiken om gebruikers toe te voegen, etc.</p>
+        <img src="deel2stap1.png"/>
+        <br />
+        <hr />
+    </div>
+    
+    <div class="body-style">
+        <h2>STAP 2 :  Gebruik maken van IdentityDbContext</h2>
+        <h4>Kort samengevat:</h4>
+        <p>We veranderen in Data/PxlAppDbContext de : DbContext naar : IdentityDbContext en daarnaast passen we dit natuurlijk ook aan in onze services. 
+            Hier komt een lijn code bij.</p>
+        <img src="deel2stap2.png"/>
+        <br />
+        <hr />
+    </div>
+    
+    <div class="body-style">
+        <h2>STAP 3 : Custom class voor Identity </h2>
+        <h4>Kort samengevat:</h4>
+        <p>In mijn geval heb ik het systeem uit een van de laatste lessen toegepast op het project. Hierbij heb ik een CustomIdentityUser gemaakt, met extra properties.
+            In PXLAppDbContext en Startup is dit aangepast zodat er gebruik wordt gemaakt van deze CustomIdentityUser en niet de gebruikelijke IdentityUser. We voegen tevens nog iets toe aan Startup.
+        </p>
+        <img src="deel2stap3_1.png"/>
+        <br/>
+        <img src="deel2stap3_2.png"/>
+        <br />
+        <hr />
+    </div>
+    
+    <div class="body-style">
+        <h2>STAP 4 : Migratie toevoegen en databank updaten </h2>
+        <h4>Kort samengevat:</h4>
+        <p>
+            We gebruiken hiervoor add-migration identity en update-database
+        </p>
+        <br />
+        <hr />
+    </div>
+    
+    <div class="body-style">
+        <h2>STAP 5 : RoleHelper</h2>
+        <h4>Kort samengevat:</h4>
+        <p>
+            We maken een RoleHelper. Die zorgt ervoor dat al onze Roles beschikbaar zijn als properties en zorgen voor een methode die we gebruiken om de rollen te accessen. 
+        </p>
+        <img src="deel2stap5.png"/>
+        <br />
+        <hr />
+    </div>
+    
+    <div class="body-style">
+        <h2>STAP 6 : SeedData</h2>
+        <h4>Kort samengevat:</h4>
+        <p>
+            Zoals we eerder onze context toevoegden doen we dit nu ook voor de UserManager en RoleManager, daarna voegen we de data toe aan onze SeedData
+        </p>
+        <img src="deel2stap6_1.png"/>
+        <br/>
+        <img src="deel2stap6_2.png"/>
+        <br />
+        <hr />
+    </div>
+    
+<div class="body-style">
+    <h2>STAP 7 : Access Denied en Logout-pagina</h2>
+    <h4>Kort samengevat: </h4>
+    <p>
+        In onze AccountController die we maken zorgen we ervoor dat we een Access Denied-pagina hebben en een functie om uit te loggen.
+        We maken tevens in onze Views een folder Account aan. In deze folder maken we dan al onze views voor dit onderdeel.
+    </p>
+    <img src="deel2stap7_1.png"/>
+    <br/>
+    <img src="deel2stap7_2.png"/>
+    <br />
+    <hr />
+</div>
+
+<div class="body-style">
+    <h2>STAP 8 : LoginViewModel en RegisterViewModel</h2>
+    <h4>Kort samengevat: </h4>
+    <p>
+        We maken tevens een LoginViewModel en een RegisterViewModel. Dit gebruiken we op onze views Login En Register. In onze AccountController voegen we ook de bijhorende methods toe.
+    </p>
+    <img src="deel2stap8_1.png"/>
+    <br/>
+    <img src="deel2stap8_2.png"/>
+    <br />
+    <img src="deel2stap8_3.png"/>
+    <br />
+    <hr />
+</div>
+
+<div class="body-style">
+    <h2>STAP 9 : AccountController</h2>
+    <h4>Kort samengevat: </h4>
+    <p>
+        In onze AccountController doen we alles dat te maken heeft met registreren, inloggen, etc. Daarnaast wordt er bij het registreren geen rol toegekend in de databank. 
+        Dit kan immers enkel de admin doen. De pagina edit is enkel toegankelijk voor deze admin en hier kan hij een rol toekennen.
+    </p>
+    <img src="deel2stap9.png"/>
+    <br />
+    <hr />
+</div>
+
+<div class="body-style">
+    <h2>STAP 10 : Authorizen</h2>
+    <h4>Kort samengevat: </h4>
+    <p>
+        De authorisatie op verschillende paginas gebeurt op verschillende manieren, soms globaal over een controller, soms over methods. Daarnaast is zijn er enkele speciale checks voor lectoren.
+    </p>
+    <img src="deel2stap10_1.png"/>
+    <br/>
+    <img src="deel2stap10_2.png"/>
+    <br />
+    <hr />
+</div>
+</div>
+

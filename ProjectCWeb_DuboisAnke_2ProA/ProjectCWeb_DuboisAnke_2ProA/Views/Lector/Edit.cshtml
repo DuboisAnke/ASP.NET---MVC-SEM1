@@ -1,0 +1,48 @@
+﻿@model ProjectCWeb_DuboisAnke_2ProA.Models.Lector
+
+@{
+    ViewData["Title"] = "Edit";
+}
+<link rel="stylesheet" href="~/css/personalstyling.css" />
+<link rel="stylesheet" href="~/css/footerstyle.css" />
+
+<br />
+<h1>BEWERK LECTOR</h1>
+
+<hr />
+<div class="row body-style">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div class="form-group">
+                @*<label asp-for="StudentId" class="control-label"></label>*@
+                <input type="hidden" asp-for="LectorId" class="form-control" />
+                <span asp-validation-for="LectorId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="h5">NAAM</label>
+                <input asp-for="Gebruiker.Naam" class="form-control input-field" />
+                <span asp-validation-for="Gebruiker.Naam" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="h5">VOORNAAM</label>
+                <input asp-for="Gebruiker.Voornaam" class="form-control input-field" />
+                <span asp-validation-for="Gebruiker.Voornaam" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="h5">E-MAILADRES</label>
+                <input asp-for="Gebruiker.Email" class="form-control input-field" />
+            </div>
+            <div class="form-group">
+                <input type="submit" value="OPSLAAN" class="save" />
+            </div>
+        </form>
+    </div>
+</div>
+<hr/>
+<div>
+    <a asp-action="Index">Terug naar LECTOREN</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

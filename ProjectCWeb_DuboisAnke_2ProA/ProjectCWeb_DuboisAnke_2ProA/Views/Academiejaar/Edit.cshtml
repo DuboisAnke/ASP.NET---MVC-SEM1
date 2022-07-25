@@ -1,0 +1,36 @@
+﻿@model ProjectCWeb_DuboisAnke_2ProA.Models.Academiejaar
+
+@{
+    ViewData["Title"] = "Edit";
+}
+<link rel="stylesheet" href="~/css/personalstyling.css" />
+<link rel="stylesheet" href="~/css/footerstyle.css" />
+
+<br />
+<h1>BEWERK ACADEMIEJAAR</h1>
+
+<hr />
+<div class="row body-style">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="AcademieJaarId" />
+            <div class="form-group">
+                <label class="h5">STARTDATUM</label>
+                <input asp-for="StartDatum" class="form-control input-field" />
+                <span asp-validation-for="StartDatum" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="OPSLAAN" class="save" />
+            </div>
+        </form>
+    </div>
+</div>
+<hr/>
+<div>
+    <a asp-action="Index">Terug naar ACADEMIEJAREN</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

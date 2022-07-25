@@ -1,0 +1,57 @@
+﻿@model ProjectCWeb_DuboisAnke_2ProA.ViewModels.InfoLectorViewModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+<link rel="stylesheet" href="~/css/personalstyling.css" />
+<link rel="stylesheet" href="~/css/footerstyle.css" />
+
+<br />
+<h1>DETAILS</h1>
+<hr/>
+<div>
+    <div class="body-style">
+        <info-lector info-lector-view-model="Model"></info-lector>
+    </div>
+    @*<div>
+        <dl class="row body-style">
+            <dt class="col-sm-2">
+                <label class="h6">ID</label>
+            </dt>
+            <dd class="col-sm-10">
+                <p>
+                    @Html.DisplayFor(model => model.Lector.LectorId)
+                </p>
+            </dd>
+            <dt class="col-sm-2">
+                <label class="h6">NAAM</label>
+            </dt>
+            <dd class="col-sm-10">
+                <p>
+                    @Html.DisplayFor(model => model.Lector.Gebruiker.Naam);
+                </p>
+            </dd>
+            <dt class="col-sm-2">
+                <label class="h6">VOORNAAM</label>
+            </dt>
+            <dd class="col-sm-10">
+                <p>
+                    @Html.DisplayFor(model => model.Lector.Gebruiker.Voornaam)
+                </p>
+            </dd>
+            <dt class="col-sm-2">
+                <label class="h6">EMAIL</label>
+            </dt>
+            <dd class="col-sm-10">
+                <p>
+                    @Html.DisplayFor(model => model.Lector.Gebruiker.Email)
+                </p>
+            </dd>
+        </dl>
+    </div>*@
+    <hr/>
+    <div>
+        <a asp-action="Edit" asp-route-id="@Model.Lector.LectorId">Bewerk</a> |
+        <a asp-action="Index">Terug naar VAKKEN</a>
+    </div>
+</div>

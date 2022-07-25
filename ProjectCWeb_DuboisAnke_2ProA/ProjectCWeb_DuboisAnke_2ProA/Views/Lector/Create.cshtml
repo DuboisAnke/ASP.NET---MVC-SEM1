@@ -1,0 +1,44 @@
+﻿@model ProjectCWeb_DuboisAnke_2ProA.Models.Lector
+
+@{
+    ViewData["Title"] = "Create";
+}
+<link rel="stylesheet" href="~/css/personalstyling.css" />
+<link rel="stylesheet" href="~/css/footerstyle.css" />
+
+<br />
+<h1>LECTOR</h1>
+
+<hr />
+<div class="row body-style">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label class="h5">NAAM</label>
+                <input asp-for="Gebruiker.Naam" class="form-control input-field" placeholder="Naam"/>
+                <span asp-validation-for="Gebruiker.Naam" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="h5">VOORNAAM</label>
+                <input asp-for="Gebruiker.Voornaam" class="form-control input-field" placeholder="Voornaam"/>
+                <span asp-validation-for="Gebruiker.Voornaam" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="h5">E-MAILADRES</label>
+                <input asp-for="Gebruiker.Email" class="form-control input-field" placeholder="E-mailadres"/>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="LECTOR AANMAKEN" class="save" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Terug naar LECTOREN</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

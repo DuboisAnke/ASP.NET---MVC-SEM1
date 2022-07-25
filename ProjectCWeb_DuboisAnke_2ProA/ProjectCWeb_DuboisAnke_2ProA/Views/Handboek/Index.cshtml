@@ -1,0 +1,53 @@
+﻿@model IEnumerable<ProjectCWeb_DuboisAnke_2ProA.Models.Handboek>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<link rel="stylesheet" href="css/personalstyling.css" />
+<link rel="stylesheet" href="~/css/footerstyle.css" />
+
+<br />
+<h1>HANDBOEKEN</h1>
+<hr />
+<p>
+    <a asp-action="Create" class="text-link p-2">Nieuw handboek aanmaken</a>
+</p>
+<hr />
+<table class="personal-table">
+    <thead>
+        <tr>
+            <th>
+                <label>TITEL</label>
+            </th>
+            <th>
+                <label>PRIJS</label>
+            </th>
+            <th>
+                <label>UITGAVEDATUM</label>
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Titel)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Kostprijs)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UitgifteDatum)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.HandboekId">Bewerk</a> |
+                    <a asp-action="Details" asp-route-id="@item.HandboekId">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.HandboekId">Verwijder</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

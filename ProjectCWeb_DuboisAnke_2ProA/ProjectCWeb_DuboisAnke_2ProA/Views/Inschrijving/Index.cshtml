@@ -1,0 +1,58 @@
+﻿@model IEnumerable<ProjectCWeb_DuboisAnke_2ProA.Models.Inschrijving>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<link rel="stylesheet" href="css/personalstyling.css" />
+<link rel="stylesheet" href="~/css/footerstyle.css" />
+
+<br />
+<h1>INSCHRIJVINGEN</h1>
+<hr />
+<p>
+    <a asp-action="Create" class="text-link p-2">Nieuwe inschrijving aanmaken</a>
+</p>
+<hr />
+<table class="personal-table">
+    <thead>
+        <tr>
+            <th>
+                <label>STUDENT</label>
+            </th>
+            <th>
+                <label>VAKLECTOR</label>
+            </th>
+            <th>
+                <label>VAK</label>
+            </th>
+            <th>
+                <label>ACADEMIEJAAR</label>
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Student.Gebruiker.Naam)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.VakLector.Lector.Gebruiker.Naam)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.VakLector.Vak.VakNaam)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Academiejaar.StartDatum)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.InschrijvingId">Bewerk</a> |
+                <a asp-action="Details" asp-route-id="@item.InschrijvingId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.InschrijvingId">Verwijder</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

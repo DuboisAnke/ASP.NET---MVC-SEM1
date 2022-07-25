@@ -1,0 +1,36 @@
+﻿@model ProjectCWeb_DuboisAnke_2ProA.Models.Academiejaar
+
+@{
+    ViewData["Title"] = "Details";
+}
+<link rel="stylesheet" href="~/css/personalstyling.css" />
+<link rel="stylesheet" href="~/css/footerstyle.css" />
+
+<br />
+<h1>DETAILS</h1>
+<hr/>
+<div>
+  
+    <dl class="row body-style">
+        <dt class="col-sm-2">
+            <label class="h6">ID</label>
+        </dt>
+        <dd class="col-sm-10">
+            <p>
+                @Html.DisplayFor(model => model.AcademieJaarId)
+            </p>
+        </dd>
+        <dt class="col-sm-2">
+            <label class="h6">STARTDATUM</label>
+        </dt>
+        <dd class="col-sm-10">
+            <p>
+                @Html.DisplayFor(model => model.StartDatum)
+            </p>
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.AcademieJaarId">Bewerk</a> |
+    <a asp-action="Index">Terug naar ACADEMIEJAREN</a>
+</div>

@@ -1,0 +1,44 @@
+﻿@model ProjectCWeb_DuboisAnke_2ProA.Models.Vak
+
+@{
+    ViewData["Title"] = "Create";
+}
+<link rel="stylesheet" href="~/css/personalstyling.css" />
+<link rel="stylesheet" href="~/css/footerstyle.css" />
+
+<br />
+<h1>VAK</h1>
+
+<hr />
+<div class="row body-style">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label class="h5">NAAM</label>
+                <input asp-for="VakNaam" class="form-control input-field" placeholder="Naam van het vak"/>
+                <span asp-validation-for="VakNaam" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="h5">STUDIEPUNTEN</label>
+                <input asp-for="StudiePunten" class="form-control input-field" placeholder="4" />
+                <span asp-validation-for="StudiePunten" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="h5">HANDBOEK</label>
+                <select asp-for="HandBoekId" class ="form-control input-field" asp-items="ViewBag.HandBoekId"></select>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="VAK AANMAKEN" class="save" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Terug naar VAKKEN</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
